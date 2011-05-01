@@ -20,7 +20,7 @@ class KindleSync
     begin
       notify("info", "Beginning transfer...")
 
-      files = Dir["#{source}/Ruby/*.*"]
+      files = Dir["#{source}/*/*.*"]
       
       files.each do |source_file|
         filename = source_file.gsub(pattern, "")
@@ -32,7 +32,7 @@ class KindleSync
           counter += 1
         end
       end
-      
+
       notify("success", "Transfered #{counter} files")
     rescue
       error($!)
@@ -54,6 +54,6 @@ class KindleSync
   end
   
   def error(msg)
-    @growl.notify "sync-success", "Kindle Sync Error!", msg.to_s
+    @growl.notify "sync-error", "Kindle Sync Error!", msg.to_s
   end
 end
