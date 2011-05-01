@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require File.join(File.dirname(__FILE__), 'kindle_sync')
+
+sync = KindleSync.new("Kindle")
+if sync.ready?
+  sync.process("/Volumes/Shared/Books", "documents")
+end
